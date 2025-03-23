@@ -11,10 +11,27 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import configparser
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Read settings from settings.ini
+config = configparser.ConfigParser()
+config.read(os.path.join(BASE_DIR, 'settings.ini'))
+
+# Database configuration from settings.ini
+DATABASES = {
+    'default': {
+        'ENGINE': config.get('database', 'ENGINE'),
+        'NAME': config.get('database', 'NAME'),
+        'USER': config.get('database', 'USER'),
+        'PASSWORD': config.get('database', 'PASSWORD'),
+        'HOST': config.get('database', 'HOST'),
+        'PORT': config.get('database', 'PORT'),
+    }
+}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
