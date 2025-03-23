@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - DBank</title>
+</head>
+<body>
+    <h1>Create New Account at DBank</h1>
+
+    <form method="post" action="/create_account/">
+        {% csrf_token %}
+
+        <!-- Personal Information -->
+        <label for="full_name">Full Name:</label><br>
+        <input type="text" id="full_name" name="full_name" required><br><br>
+
+        <label for="dob">Date of Birth:</label><br>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label for="person_id">Social Security Number / ID Number:</label><br>
+        <input type="text" id="person_id" name="person_id" required><br><br>
+
+        <!-- Address Information -->
+        <label for="address">Street Address:</label><br>
+        <input type="text" id="address" name="address" required><br><br>
+
+        <label for="postal_code">Postal Code:</label><br>
+        <input type="text" id="postal_code" name="postal_code" required><br><br>
+
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city" required><br><br>
+
+        <label for="country">Country:</label><br>
+        <select id="country" name="country" required>
+            <option value="Sweden">Sweden</option>
+            <option value="Norway">Norway</option>
+            <option value="Denmark">Denmark</option>
+            <!-- Add more options -->
+        </select><br><br>
+
+        <!-- Contact Information -->
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="email">Email Address:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <!-- Account Information -->
+        <label for="account_type">Account Type:</label><br>
+        <input type="radio" id="private_account" name="account_type" value="private" checked>
+        <label for="private_account">Personal Account</label><br>
+        <input type="radio" id="savings_account" name="account_type" value="savings">
+        <label for="savings_account">Savings Account</label><br><br>
+
+        <!-- Security Information -->
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="confirm_password">Confirm Password:</label><br>
+        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+
+        <label for="security_question">Select Security Question:</label><br>
+        <select id="security_question" name="security_question" required>
+            <option value="first_pet">What is the name of your first pet?</option>
+            <option value="mother_maiden_name">What is your mother's maiden name?</option>
+            <!-- Add more options -->
+        </select><br><br>
+
+        <label for="security_answer">Answer to Security Question:</label><br>
+        <input type="text" id="security_answer" name="security_answer" required><br><br>
+
+        <button type="submit">Create Account</button>
+    </form>
+</body>
+</html>
